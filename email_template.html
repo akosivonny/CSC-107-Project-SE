@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px 5px 0 0;
+        }
+        .content {
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 0 0 5px 5px;
+        }
+        .status-approved {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        .status-rejected {
+            color: #f44336;
+            font-weight: bold;
+        }
+        .status-pending {
+            color: #ff9800;
+            font-weight: bold;
+        }
+        .booking-details {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        .feedback {
+            border-left: 4px solid #4CAF50;
+            padding-left: 15px;
+            margin: 15px 0;
+        }
+        .notification-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h2>{{#if (eq notification_type "status_update")}}
+            Farm Visit Booking Update
+        {{else}}
+            New Feedback for Your Booking
+        {{/if}}</h2>
+    </div>
+    
+    <div class="content">
+        <p>Dear {{to_name}},</p>
+        
+        {{#if (eq notification_type "status_update")}}
+            <p>Your farm visit booking has been <span class="status-{{booking_status}}">{{booking_status}}</span>.</p>
+        {{else}}
+            <p>You have received new feedback for your farm visit booking.</p>
+        {{/if}}
+        
+        <div class="booking-details">
+            <h3>Booking Details:</h3>
+            <p><strong>Visit Date:</strong> {{visit_date}}</p>
+            <p><strong>Purpose of Visit:</strong> {{purpose}}</p>
+            <p><strong>Group Size:</strong> {{group_size}} person(s)</p>
+            <p><strong>Current Status:</strong> <span class="status-{{booking_status}}">{{booking_status}}</span></p>
+        </div>
+        
+        <div class="feedback">
+            <h3>{{#if (eq notification_type "status_update")}}Admin Feedback{{else}}New Feedback{{/if}}:</h3>
+            <p>{{feedback}}</p>
+        </div>
+        
+        <p>If you have any questions or need to make changes to your booking, please contact us.</p>
+        
+        <p>Best regards,<br>
+        Farm Management Team</p>
+    </div>
+</body>
+</html> 
