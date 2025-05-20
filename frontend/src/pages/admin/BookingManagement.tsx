@@ -190,13 +190,13 @@ const BookingManagement = () => {
                 </TableCell>
                 <TableCell>
                   <Box sx={{ display: 'flex', gap: 1 }}>
-                    {booking.status === 'pending' && (
+                  {booking.status === 'pending' && (
                       <Tooltip title="Respond">
                         <IconButton
-                          size="small"
+                      size="small"
                           color="primary"
-                          onClick={() => handleRespond(booking)}
-                        >
+                      onClick={() => handleRespond(booking)}
+                    >
                           <EditIcon />
                         </IconButton>
                       </Tooltip>

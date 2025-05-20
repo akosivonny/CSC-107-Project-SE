@@ -7,6 +7,7 @@ use App\Models\PreEnrollment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+use App\Events\PreEnrollmentSubmitted;
 
 class PreEnrollmentController extends Controller
 {
@@ -40,6 +41,8 @@ class PreEnrollmentController extends Controller
             }
 
             $preEnrollment = PreEnrollment::create($data);
+
+            event(new PreEnrollmentSubmitted($preEnrollment));
 
             return response()->json([
                 'status' => 'success',

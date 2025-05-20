@@ -1,0 +1,1 @@
+import{aI as t,au as p}from"./index-DbYJZ2L_.js";function m(n){const{theme:e,name:o,props:s}=n;return!e||!e.components||!e.components[o]||!e.components[o].defaultProps?s:t(e.components[o].defaultProps,s)}function c({props:n,name:e,defaultTheme:o,themeId:s}){let r=p(o);return s&&(r=r[s]||r),m({theme:r,name:e,props:n})}export{m as g,c as u};
