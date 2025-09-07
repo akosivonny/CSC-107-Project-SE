@@ -1,0 +1,41 @@
+import time
+class BinarySearch:
+    def __init__(self, data):
+        self.data = sorted(data)
+
+    def search(self, target):
+        print(f"Number of the list: {target}")
+        start_time = time.time()
+
+        low = 0
+        high = len(self.data) - 1
+
+        while low <= high:
+            mid = (low + high) // 2
+
+            try:
+                mid_value = self.data[mid]
+            except IndexError:
+                print("invalid index:")
+                return -1
+
+            if mid_value == target:
+                end_time = time.time()
+                print(f"was found at index: {mid}")
+                print(f"executiontime completed: {end_time - start_time:.6f} seconds")
+                return mid
+            elif mid_value < target:
+                low = mid + 1
+            else:
+                high = mid - 1
+
+        end_time = time.time()
+        print(f"was not found at index: {target} ")
+        print(f"execution time: {end_time - start_time:.6f} seconds")
+        return -1
+inp = int(input("input size:"))
+numbers = [10, 25, 30, 45, 50]
+target = 30
+
+searcher = BinarySearch(numbers)
+result = searcher.search(target)

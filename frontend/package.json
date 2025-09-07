@@ -1,5 +1,5 @@
 {
-  "name": "farm-management-frontend",
+  "name": "eutiquio-integrated-farm-frontend",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -35,5 +35,8 @@
     "eslint-plugin-react-refresh": "^0.4.5",
     "typescript": "^5.2.2",
     "vite": "^5.1.0"
+  },
+  "engines": {
+    "node": "18.x"
   }
 }

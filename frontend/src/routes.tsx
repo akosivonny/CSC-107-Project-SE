@@ -5,6 +5,7 @@ import BookingManagement from './pages/admin/BookingManagement';
 import VirtualTour from './pages/visitor/VirtualTour';
 import BookingSystem from './pages/visitor/BookingSystem';
 import MyBookings from './pages/visitor/MyBookings';
+import VirtualEvent from './pages/admin/VirtualEvent';
 
 interface Route {
   path: string;
@@ -20,6 +21,10 @@ export const adminRoutes: Route[] = [
   {
     path: '/admin/bookings',
     element: <BookingManagement />,
+  },
+  {
+    path: '/admin/virtual-event',
+    element: <VirtualEvent />,
   },
 ];
 

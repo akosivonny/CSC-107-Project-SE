@@ -80,6 +80,11 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
           icon: <BookingIcon />,
           onClick: () => navigate('/admin/bookings'),
         },
+        {
+          text: 'Virtual Event',
+          icon: <EventIcon />,
+          onClick: () => navigate('/admin/virtual-event'),
+        },
       ],
       student: [
         {
@@ -140,7 +145,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
     <div>
       <Toolbar>
         <Typography variant="h6" noWrap component="div">
-          Farm Management
+          Eutiquio Integrated Farm
         </Typography>
       </Toolbar>
       <List>
@@ -175,7 +180,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
-            {user?.role.charAt(0).toUpperCase() + user?.role.slice(1)} Dashboard
+            {user?.role ? user.role.charAt(0).toUpperCase() + user.role.slice(1) : ''} Dashboard
           </Typography>
           <Button color="inherit" onClick={() => navigate('/profile')}>
             {user?.name}

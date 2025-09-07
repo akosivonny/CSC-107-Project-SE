@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { User, UserRole } from '../types';
+import { User, UserRole, UserStatus } from '../types';
 import { useNotifications } from './NotificationContext';
 
 interface UserContextType {
@@ -39,7 +39,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
           email,
           name: userData.name,
           role: userData.role,
-          status: 'active',
+          status: 'active' as UserStatus,
           joinDate: userData.joinDate || new Date().toISOString(),
           lastLogin: userData.lastLogin || new Date().toISOString(),
           phone: userData.phone,
@@ -88,7 +88,8 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
       // Preserve passwords from existing entries
       userMap.forEach((value, key) => {
         if (existing.has(key)) {
-          value.password = existing.get(key).password;
+          const existingUser = existing.get(key) as { password?: string };
+          value.password = existingUser?.password;
         }
       });
     }
@@ -101,7 +102,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const newUser: User = {
       ...userData,
       id: Date.now().toString(),
-      status: 'active',
+      status: 'active' as UserStatus,
       joinDate: new Date().toISOString().split('T')[0],
       lastLogin: new Date().toISOString(),
     };

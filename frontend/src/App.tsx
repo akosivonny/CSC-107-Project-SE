@@ -10,6 +10,7 @@ import { NotificationProvider } from './contexts/NotificationContext';
 import { BookingProvider } from './contexts/BookingContext';
 import { UserRole } from './types';
 import { defaultCourses } from './utils/defaultCourses';
+import { VirtualEventProvider } from './contexts/VirtualEventContext';
 
 // Lazy load components
 const Login = React.lazy(() => import('./pages/auth/Login'));
@@ -28,6 +29,7 @@ const EnrolledCourses = React.lazy(() => import('./pages/student/EnrolledCourses
 const Profile = React.lazy(() => import('./pages/Profile'));
 const PreEnrollmentManagement = React.lazy(() => import('./pages/admin/PreEnrollmentManagement'));
 const MyBookings = React.lazy(() => import('./pages/visitor/MyBookings'));
+const VirtualEvent = React.lazy(() => import('./pages/admin/VirtualEvent'));
 
 const theme = createTheme({
   palette: {
@@ -135,6 +137,16 @@ function AppRoutes() {
           </ProtectedRoute>
         }
       />
+      <Route
+        path="/admin/virtual-event"
+        element={
+          <ProtectedRoute allowedRoles={['admin']}>
+            <React.Suspense fallback={<div>Loading...</div>}>
+              <VirtualEvent />
+            </React.Suspense>
+          </ProtectedRoute>
+        }
+      />
 
       {/* Student Routes */}
       <Route
@@ -238,12 +250,14 @@ function App() {
             <CourseProvider>
               <PreEnrollmentProvider>
                 <BookingProvider>
-                  <CourseInitializer />
-                  <ThemeProvider theme={theme}>
-                    <React.Suspense fallback={<div>Loading...</div>}>
-                      <AppRoutes />
-                    </React.Suspense>
-                  </ThemeProvider>
+                  <VirtualEventProvider>
+                    <CourseInitializer />
+                    <ThemeProvider theme={theme}>
+                      <React.Suspense fallback={<div>Loading...</div>}>
+                        <AppRoutes />
+                      </React.Suspense>
+                    </ThemeProvider>
+                  </VirtualEventProvider>
                 </BookingProvider>
               </PreEnrollmentProvider>
             </CourseProvider>

@@ -144,10 +144,10 @@ const Dashboard = () => {
           <Paper sx={{ p: 2, height: '100%' }}>
             <Box display="flex" alignItems="center" justifyContent="space-between" mb={2}>
               <Box display="flex" alignItems="center">
-                <Badge badgeContent={adminNotifications.length} color="error" sx={{ mr: 1 }}>
-                  <NotificationsIcon />
-                </Badge>
-                <Typography variant="h6">System Notifications</Typography>
+              <Badge badgeContent={adminNotifications.length} color="error" sx={{ mr: 1 }}>
+                <NotificationsIcon />
+              </Badge>
+              <Typography variant="h6">System Notifications</Typography>
               </Box>
               <Button 
                 variant="outlined" 
